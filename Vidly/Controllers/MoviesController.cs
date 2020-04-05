@@ -17,6 +17,25 @@ namespace Vidly.Controllers
                 Name = "Shrek!"
             };
             return View(model);
+            
+        }
+
+        public ActionResult Edit(int id)
+        {
+            return Content("id=" + id);
+        }
+
+        //
+        public ActionResult Index(int? pageIndex, string sortBy)
+        {
+            if (!pageIndex.HasValue)
+                pageIndex = 1;
+
+            if (String.IsNullOrWhiteSpace(sortBy))
+                sortBy = "Name";
+
+
+            return Content($"pageIndex={pageIndex}&sortBy={sortBy}");
         }
     }
 }
